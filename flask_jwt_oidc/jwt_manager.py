@@ -266,7 +266,8 @@ class JwtManager(object):
                 rsa_key,
                 algorithms=self.algorithms,
                 audience=self.audience,
-                issuer=self.issuer
+                issuer=self.issuer,
+                options = { 'verify_at_hash': False }
             )
             _request_ctx_stack.top.current_user = g.jwt_oidc_token_info = payload
         except jwt.ExpiredSignatureError:
